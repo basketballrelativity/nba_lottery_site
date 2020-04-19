@@ -1,5 +1,5 @@
 # nba_lottery_site
-Site to host live NBA Draft Lottery Odds
+Site to host live NBA Draft Lottery odds: https://nba-lottery.ue.r.appspot.com/
 
 ## Purpose
 
