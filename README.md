@@ -5,4 +5,4 @@ Check it out [here](https://nba-lottery.ue.r.appspot.com/)!
 
 ## Demo
 
-<img src="site.gif" height="500"/>
+<img src="site.gif" height="400"/>
