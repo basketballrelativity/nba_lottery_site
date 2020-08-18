@@ -15,7 +15,7 @@ LOTTERY_INFO = {1: {'name': 'Warriors', 'id': '1610612744'},
                 11: {'name': 'Spurs', 'id': '1610612759'},
                 12: {'name': 'Kings', 'id': '1610612766'},
                 13: {'name': 'Pelicans', 'id': '1610612740'},
-                14: {'name': 'Trailblazers', 'id': '1610612757'}}
+                14: {'name': 'Grizzlies', 'id': '1610612763'}}
 
 LOTTO_CHANCES = {1: 140, 2: 140, 3: 140,
                  4: 125, 5: 105, 6: 90, 7: 60,
@@ -194,8 +194,16 @@ def update_odds(teams_selected,
     lotto_df = pd.DataFrame(prob_dict)
 
     # Coding in the pick conversions that trigger should a certain order be pulled
-    lotto_df.columns = ['Pelicans' if (x == 2 and (prob_dict[x][13]==100 or prob_dict[x][12]==100 or prob_dict[x][11]==100 or prob_dict[x][10]==100)) else
-                        LOTTERY_INFO[x]['name']
+    lotto_df.columns = ['Pelicans' if (x == 2 and (prob_dict[x][13]==100 or prob_dict[x][12]==100 or prob_dict[x][11]==100 or prob_dict[x][10]==100))
+                        else 'Celtics' if (x == 14 and  (prob_dict[x][6] == 100
+                                                         or prob_dict[x][7] == 100
+                                                         or prob_dict[x][8] == 100
+                                                         or prob_dict[x][9] == 100
+                                                         or prob_dict[x][10] == 100
+                                                         or prob_dict[x][11] == 100
+                                                         or prob_dict[x][12] == 100
+                                                         or prob_dict[x][13] == 100))
+                        else LOTTERY_INFO[x]['name']
                         for x in LOTTERY_INFO]
     lotto_df = lotto_df.T
     lotto_df.columns = list(range(1, len(LOTTO_CHANCES) + 1))
