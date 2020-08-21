@@ -70,9 +70,11 @@ def get_top_picks(teams_selected, lottery_info):
     top_pick_order = []
     for team in teams_selected:
         if team != expected_team:
+            orig_ex = expected_team
             if len(top_pick_list) < 4 and team_count >= 5:
-                top_pick_list.append(expected_team)
-                expected_team -= 1
+                for ex_team in range(orig_ex, team):
+                    top_pick_list.append(expected_team)
+                    expected_team -= 1
         if team_count < 5:
             top_pick_order.append(team)
         expected_team -= 1
@@ -140,10 +142,10 @@ def update_teams(lottery_info, top_pick_list,
                             if pos_team not in teams_selected and pos_team not in top_pick_list:
                                 top_pick_list.append(pos_team)
 
-        if current_slot == 5:
+        if current_slot <= 5:
             top_pick_list = []
             for x in lottery_info:
-                if x not in teams_selected:
+                if x not in teams_selected[0:10]:
                     top_pick_list.append(x)
 
     return teams_selected, top_pick_list, top_pick_order, current_slot
