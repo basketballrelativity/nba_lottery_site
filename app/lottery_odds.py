@@ -2,20 +2,20 @@ import itertools
 import numpy as np
 import pandas as pd
 
-LOTTERY_INFO = {1: {'name': 'Warriors', 'id': '1610612744'},
-                2: {'name': 'Cavaliers', 'id': '1610612739'},
-                3: {'name': 'Timberwolves', 'id': '1610612750'},
-                4: {'name': 'Hawks', 'id': '1610612737'},
-                5: {'name': 'Pistons', 'id': '1610612765'},
-                6: {'name': 'Knicks', 'id': '1610612752'},
-                7: {'name': 'Bulls', 'id': '1610612741'},
-                8: {'name': 'Hornets', 'id': '1610612766'},
-                9: {'name': 'Wizards', 'id': '1610612764'},
-                10: {'name': 'Suns', 'id': '1610612756'},
-                11: {'name': 'Spurs', 'id': '1610612759'},
-                12: {'name': 'Kings', 'id': '1610612766'},
-                13: {'name': 'Pelicans', 'id': '1610612740'},
-                14: {'name': 'Grizzlies', 'id': '1610612763'}}
+LOTTERY_INFO = {1: {'name': 'Rockets', 'id': '1610612745'},
+                2: {'name': 'Pistons', 'id': '1610612765'},
+                3: {'name': 'Magic', 'id': '1610612753'},
+                4: {'name': 'Thunder', 'id': '1610612760'},
+                5: {'name': 'Cavaliers', 'id': '1610612739'},
+                6: {'name': 'Timberwolves', 'id': '1610612750'},
+                7: {'name': 'Raptors', 'id': '1610612761'},
+                8: {'name': 'Bulls', 'id': '1610612741'},
+                9: {'name': 'Kings', 'id': '1610612766'},
+                10: {'name': 'Pelicans', 'id': '1610612740'},
+                11: {'name': 'Hornets', 'id': '1610612766'},
+                12: {'name': 'Spurs', 'id': '1610612759'},
+                13: {'name': 'Pacers', 'id': '1610612754'},
+                14: {'name': 'Warriors', 'id': '1610612744'}}
 
 LOTTO_CHANCES = {1: 140, 2: 140, 3: 140,
                  4: 125, 5: 105, 6: 90, 7: 75,
@@ -194,8 +194,21 @@ def update_odds(teams_selected,
     lotto_df = pd.DataFrame(prob_dict)
 
     # Coding in the pick conversions that trigger should a certain order be pulled
-    lotto_df.columns = ['Pelicans' if (x == 2 and (prob_dict[x][13]==100 or prob_dict[x][12]==100 or prob_dict[x][11]==100 or prob_dict[x][10]==100))
-                        else 'Celtics' if (x == 14 and  (prob_dict[x][6] == 100
+    lotto_df.columns = ['Warriors' if (x == 6 and (prob_dict[x][3] == 100
+                                                   or prob_dict[x][4] == 100
+                                                   or prob_dict[x][5] == 100
+                                                   or prob_dict[x][6] == 100
+                                                   or prob_dict[x][7] == 100
+                                                   or prob_dict[x][8] == 100
+                                                   or prob_dict[x][9] == 100
+                                                   or prob_dict[x][10] == 100
+                                                   or prob_dict[x][11] == 100
+                                                   or prob_dict[x][12] == 100
+                                                   or prob_dict[x][13] == 100))
+                        else "Thunder" if (x == 1 and prob_dict[x][4] == 100)
+                        else 'Magic' if (x == 8 and  (prob_dict[x][4] == 100
+                                                         or prob_dict[x][5] == 100
+                                                         or prob_dict[x][6] == 100
                                                          or prob_dict[x][7] == 100
                                                          or prob_dict[x][8] == 100
                                                          or prob_dict[x][9] == 100
