@@ -3,24 +3,24 @@ import numpy as np
 import pandas as pd
 
 LOTTERY_INFO = {1: {'name': 'Rockets', 'id': '1610612745'},
-                2: {'name': 'Pistons', 'id': '1610612765'},
-                3: {'name': 'Magic', 'id': '1610612753'},
+                2: {'name': 'Magic', 'id': '1610612753'},
+                3: {'name': 'Pistons', 'id': '1610612765'},
                 4: {'name': 'Thunder', 'id': '1610612760'},
-                5: {'name': 'Cavaliers', 'id': '1610612739'},
-                6: {'name': 'Timberwolves', 'id': '1610612750'},
-                7: {'name': 'Raptors', 'id': '1610612761'},
-                8: {'name': 'Bulls', 'id': '1610612741'},
-                9: {'name': 'Kings', 'id': '1610612766'},
-                10: {'name': 'Pelicans', 'id': '1610612740'},
-                11: {'name': 'Hornets', 'id': '1610612766'},
-                12: {'name': 'Spurs', 'id': '1610612759'},
-                13: {'name': 'Pacers', 'id': '1610612754'},
-                14: {'name': 'Warriors', 'id': '1610612744'}}
+                5: {'name': 'Pacers', 'id': '1610612754'},
+                6: {'name': 'Trailblazers', 'id': '1610612757'},
+                7: {'name': 'Kings', 'id': '1610612766'},
+                8: {'name': 'Lakers', 'id': '1610612747'},
+                9: {'name': 'Spurs', 'id': '1610612759'},
+                10: {'name': 'Wizards', 'id': '1610612764'},
+                11: {'name': 'Knicks', 'id': '1610612752'},
+                12: {'name': 'Clippers', 'id': '1610612746'},
+                13: {'name': 'Hornets', 'id': '1610612766'},
+                14: {'name': 'Cavaliers', 'id': '1610612739'}}
 
 LOTTO_CHANCES = {1: 140, 2: 140, 3: 140,
-                 4: 115, 5: 115, 6: 90, 7: 75,
-                 8: 45, 9: 45, 10: 45, 11: 17, 12: 16,
-                 13: 12, 14: 5}
+                 4: 125, 5: 105, 6: 90, 7: 75,
+                 8: 60, 9: 45, 10: 30, 11: 20, 12: 15,
+                 13: 10, 14: 5}
 TOP_PICKS = 4
 
 
@@ -194,25 +194,18 @@ def update_odds(teams_selected,
     lotto_df = pd.DataFrame(prob_dict)
 
     # Coding in the pick conversions that trigger should a certain order be pulled
-    lotto_df.columns = ['Warriors' if (x == 6 and (prob_dict[x][3] == 100
-                                                   or prob_dict[x][4] == 100
-                                                   or prob_dict[x][5] == 100
-                                                   or prob_dict[x][6] == 100
-                                                   or prob_dict[x][7] == 100
-                                                   or prob_dict[x][8] == 100
-                                                   or prob_dict[x][9] == 100
-                                                   or prob_dict[x][10] == 100
-                                                   or prob_dict[x][11] == 100
-                                                   or prob_dict[x][12] == 100
-                                                   or prob_dict[x][13] == 100))
-                        else "Thunder" if (x == 1 and prob_dict[x][4] == 100)
-                        else 'Magic' if (x == 8 and  (prob_dict[x][4] == 100
-                                                         or prob_dict[x][5] == 100
-                                                         or prob_dict[x][6] == 100
-                                                         or prob_dict[x][7] == 100
-                                                         or prob_dict[x][8] == 100
-                                                         or prob_dict[x][9] == 100
-                                                         or prob_dict[x][10] == 100
+    lotto_df.columns = ["Thunder" if x == 12
+                        else "Pelicans" if (x == 8 and (prob_dict[x][0] == 100
+                                                        or prob_dict[x][1] == 100
+                                                        or prob_dict[x][2] == 100
+                                                        or prob_dict[x][3] == 100
+                                                        or prob_dict[x][4] == 100
+                                                        or prob_dict[x][5] == 100
+                                                        or prob_dict[x][6] == 100
+                                                        or prob_dict[x][7] == 100
+                                                        or prob_dict[x][8] == 100
+                                                        or prob_dict[x][9] == 100))
+                        else 'Grizzlies' if (x == 8 and  (prob_dict[x][10] == 100
                                                          or prob_dict[x][11] == 100
                                                          or prob_dict[x][12] == 100
                                                          or prob_dict[x][13] == 100))
