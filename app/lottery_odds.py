@@ -194,7 +194,20 @@ def update_odds(teams_selected,
     lotto_df = pd.DataFrame(prob_dict)
 
     # Coding in the pick conversions that trigger should a certain order be pulled
-    lotto_df.columns = ["Thunder" if x == 12
+    lotto_df.columns = ["Thunder" if (x == 12 and (prob_dict[x][0] == 100
+                                                        or prob_dict[x][1] == 100
+                                                        or prob_dict[x][2] == 100
+                                                        or prob_dict[x][3] == 100
+                                                        or prob_dict[x][4] == 100
+                                                        or prob_dict[x][5] == 100
+                                                        or prob_dict[x][6] == 100
+                                                        or prob_dict[x][7] == 100
+                                                        or prob_dict[x][8] == 100
+                                                        or prob_dict[x][9] == 100
+                                                        or prob_dict[x][10] == 100
+                                                        or prob_dict[x][11] == 100
+                                                        or prob_dict[x][12] == 100
+                                                        or prob_dict[x][13] == 100))
                         else "Pelicans" if (x == 8 and (prob_dict[x][0] == 100
                                                         or prob_dict[x][1] == 100
                                                         or prob_dict[x][2] == 100
