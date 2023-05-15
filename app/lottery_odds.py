@@ -153,7 +153,7 @@ def calculate_pick_probabilities(lotto_combos, top_picks,
                 if spot <= total_teams - 1 and spot > top_picks - 1:
                     prob_list[spot] = prob_fall[spot - team + 1]
 
-        prob_list = [x/sum(prob_list) for x in prob_list]
+        prob_list = [0 if sum(prob_list) == 0 else x/sum(prob_list) for x in prob_list]
         prob_dict[team] = [round(100*x, 1) for x in prob_list]
 
     return prob_dict
